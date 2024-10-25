@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documents</title>
+  <link href="/css/output.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto py-12">
+    <h1 class="text-3xl font-bold text-center mb-8">Your Documents</h1>
+    <div class="flex justify-center mb-4">
+      <form action="/documents" method="POST" class="flex space-x-4">
+        <input type="text" name="title" placeholder="New Document Title" required class="px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500">
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Create</button>
+      </form>
+    </div>
+
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <ul>
+        <% documents.forEach(document => { %>
+          <li class="py-2 px-4 border-b last:border-b-0">
+            <a href="/editor/<%= document._id %>" class="text-lg text-indigo-600 hover:underline"><%= document.title %></a>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
